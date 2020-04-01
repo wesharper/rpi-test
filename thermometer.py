@@ -1,8 +1,9 @@
-from gpiozero import DigitalInputDevice
+from gpiozero import SmoothedInputDevice
 from time import sleep
 
-device: DigitalInputDevice = DigitalInputDevice('BOARD18', pull_up=None)
+thermometer: SmoothedInputDevice = SmoothedInputDevice('BOARD18', sample_wait=.5)
 
 while True:
-    print(device.value)
-    sleep(1)
+    print(thermometer.is_active)
+    print(thermometer.value)
+    sleep(.5)
